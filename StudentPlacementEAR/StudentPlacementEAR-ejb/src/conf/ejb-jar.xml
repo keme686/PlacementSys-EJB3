@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ejb-jar xmlns = "http://java.sun.com/xml/ns/javaee"
+         version = "3.1"
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation = "http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd">
+   <enterprise-beans>
+    <session>
+        <ejb-name>RuleBL</ejb-name>        
+        <business-remote>com.placement.business.RuleBLRemote</business-remote>
+        <ejb-class>com.placement.business.RuleBL</ejb-class>                
+        <session-type>Stateless</session-type>
+        <init-on-startup>true</init-on-startup>
+        <transaction-type>Container</transaction-type>
+    </session>
+    <session>
+        <ejb-name>CollegeBL</ejb-name>        
+        <business-remote>com.placement.business.CollegeBLRemote</business-remote>
+        <ejb-class>com.placement.business.CollegeBL</ejb-class>                
+        <session-type>Stateless</session-type>
+        <init-on-startup>true</init-on-startup>
+        <transaction-type>Container</transaction-type>
+    </session>
+    <session>
+        <ejb-name>UsersBL</ejb-name>        
+        <business-remote>com.placement.business.UsersBLRemote</business-remote>
+        <ejb-class>com.placement.business.UsersBL</ejb-class>                
+        <session-type>Stateless</session-type>
+        <init-on-startup>true</init-on-startup>
+        <transaction-type>Container</transaction-type>
+    </session>
+   </enterprise-beans>
+</ejb-jar>

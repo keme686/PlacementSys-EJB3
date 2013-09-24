@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Result" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     student.`idNumber` AS student_idNumber,
+     student.`first_name` AS student_first_name,
+     student.`middle_name` AS student_middle_name,
+     student.`last_name` AS student_last_name,
+     student.`gender` AS student_gender,
+     student.`disability` AS student_disability,
+     student.`class_year` AS student_class_year,
+     student.`semester` AS student_semester,
+     student.`cgpa` AS student_cgpa,
+     student.`preparatory_average` AS student_preparatory_average,
+     student.`eheeece_average` AS student_eheeece_average,
+     student.`email` AS student_email,
+     student.`academic_year` AS student_academic_year,
+     student.`eheece_registration_number` AS student_eheece_registration_number,
+     student.`country` AS student_country,
+     student.`region` AS student_region,
+     student.`zone` AS student_zone,
+     student.`woreda` AS student_woreda,
+     student.`town` AS student_town,
+     student.`mobile_number` AS student_mobile_number,
+     student.`placement_id` AS student_placement_id,
+     student.`department_id` AS student_department_id,
+     student.`placement_status` AS student_placement_status,
+     student.`placement_reason` AS student_placement_reason,
+     student.`username` AS student_username,
+     department.`id` AS department_id,
+     department.`code` AS department_code,
+     department.`name` AS department_name,
+     department.`address` AS department_address,
+     department.`description` AS department_description,
+     department.`college_id` AS department_college_id
+FROM
+     `department` department INNER JOIN `student` student ON department.`id` = student.`department_id`]]>
+	</queryString>
+	<field name="student_idNumber" class="java.lang.String"/>
+	<field name="student_first_name" class="java.lang.String"/>
+	<field name="student_middle_name" class="java.lang.String"/>
+	<field name="student_last_name" class="java.lang.String"/>
+	<field name="student_gender" class="java.lang.String"/>
+	<field name="student_disability" class="java.lang.String"/>
+	<field name="student_cgpa" class="java.lang.Double"/>
+	<field name="student_region" class="java.lang.String"/>
+	<field name="department_code" class="java.lang.String"/>
+	<field name="student_placement_reason" class="java.lang.String"/>
+	<field name="department_name" class="java.lang.String"/>
+	<group name="department_name">
+		<groupExpression><![CDATA[$F{department_name}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" mode="Transparent" x="47" y="13" width="506" height="24" forecolor="#006600"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{department_name}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" mode="Transparent" x="0" y="13" width="263" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Placement Result]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" mode="Transparent" x="100" y="46" width="174" height="22"/>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" mode="Transparent" x="0" y="19" width="65" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[ID Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Transparent" x="65" y="19" width="90" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[First Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Transparent" x="155" y="19" width="98" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[Mid-Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Transparent" x="253" y="19" width="89" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[Last Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Transparent" x="342" y="19" width="48" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[Gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Transparent" x="390" y="19" width="63" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[Disability]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Transparent" x="453" y="19" width="50" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[CGPA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Transparent" x="503" y="19" width="72" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[Region]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Transparent" x="575" y="19" width="89" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Transparent" x="664" y="19" width="138" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[Reason]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" mode="Transparent" x="0" y="0" width="65" height="15"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{student_idNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Transparent" x="65" y="0" width="90" height="15"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{student_first_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Transparent" x="155" y="0" width="98" height="15"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{student_middle_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Transparent" x="253" y="0" width="89" height="15"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{student_last_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Transparent" x="342" y="0" width="48" height="15"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{student_gender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Transparent" x="390" y="0" width="63" height="15"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{student_disability}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Transparent" x="453" y="0" width="50" height="15"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{student_cgpa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Transparent" x="503" y="0" width="72" height="15"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{student_region}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Transparent" x="575" y="0" width="89" height="15"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{department_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Transparent" x="664" y="1" width="138" height="15"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{student_placement_reason}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" mode="Transparent" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" mode="Transparent" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" mode="Transparent" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

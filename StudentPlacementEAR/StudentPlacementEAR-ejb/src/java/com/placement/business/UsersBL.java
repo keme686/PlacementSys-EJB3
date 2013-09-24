@@ -1,0 +1,166 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.placement.business;
+
+import com.placement.business.utils.EmailServiceUtil;
+import com.placement.business.utils.UsersSecurityHelper;
+import com.placement.entity.Student;
+import com.placement.entity.UserField;
+import com.placement.entity.Users;
+import com.placement.exception.PlacementAppException;
+import java.util.Date;
+import java.util.List;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+/**
+ *
+ * @author kemele
+ */
+@Stateless
+@Remote(UsersBLRemote.class)
+public class UsersBL implements UsersBLRemote {
+
+    @PersistenceContext(unitName = "StudentPlacementLibPU")
+    private EntityManager em;
+
+    @Override
+    public boolean save(Users user) throws PlacementAppException {
+        try {
+            if (user != null) {
+                String password = UsersSecurityHelper.md5(user.getPassword());
+                user.setPassword(password);
+                user.setCreatedDate(new Date());
+                user.setLastModified(new Date());
+                user.setStatus(UserField.STATUS_ACTIVE);
+                em.persist(user);
+                return true;
+            } else {
+                throw new PlacementAppException("Invalid user information. Users object should not be null!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updatePassword(Users user) {
+        try {
+            if (user != null) {
+                String password = UsersSecurityHelper.md5(user.getPassword());
+                Users u = this.get(user.getUsername());
+                u.setPassword(password);
+                u.setLastModified(new Date());
+                em.merge(u);
+                return true;
+            } else {
+                throw new PlacementAppException("Invalid user information. Users object should not be null!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean update(Users user) throws PlacementAppException {
+        try {
+            if (user != null) {
+                Users u = this.get(user.getUsername());
+                user.setPassword(u.getPassword());
+                user.setLastModified(new Date());
+                em.merge(user);
+                return true;
+            } else {
+                throw new PlacementAppException("Invalid user information. Users object should not be null!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean delete(String username) {
+        try {
+            if (username != null) {
+                Users u = em.find(Users.class, username);
+                em.remove(u);
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public Users get(String username) {
+        try {
+            if (username != null) {
+                Users u = em.find(Users.class, username);
+                return u;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Users> getAll() {
+        try {
+            String q = "SELECT p FROM " + Users.class.getName() + " p";
+            Query query = em.createQuery(q);
+            List<Users> users = query.getResultList();
+            return users;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean validate(String username, String password) {
+        try {
+            if (username != null && password != null) {
+                Users u = em.find(Users.class, username);
+                String upassword = u.getPassword();
+                if (upassword.equals(UsersSecurityHelper.md5(password)) && u.getStatus() == UserField.STATUS_ACTIVE) {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean generatePassword(Users user) {
+        try {
+            user = this.get(user.getUsername());
+            if (user == null) {
+                return false;
+            }
+            String pass = UsersSecurityHelper.getSecretCode();
+            user.setPassword(UsersSecurityHelper.md5(pass));
+            em.merge(user);
+            Student s = em.find(Student.class, user.getUsername());
+            if (s != null && s.getEmail() != null && !s.getEmail().equals("") && s.getEmail().contains("@")) {
+                String text = "This is your new password automatically generated by the system. Please login and change it as soon as possible.\n Password: " + pass;
+                String subject = "New Password for Placement";
+                EmailServiceUtil.sendEmail(s.getEmail(), text, subject);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+}

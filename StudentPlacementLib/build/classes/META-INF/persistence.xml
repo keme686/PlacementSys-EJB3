@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="StudentPlacementLibPU" transaction-type="JTA">
+    <jta-data-source>java:/MySQLDS</jta-data-source>
+    <class>com.placement.entity.Student</class>
+    <class>com.placement.entity.Rule</class>
+    <class>com.placement.entity.College</class>
+    <class>com.placement.entity.Placement</class>
+    <class>com.placement.entity.Choice</class>
+    <class>com.placement.entity.DepartmentPlacement</class>
+    <class>com.placement.entity.Department</class>
+    <class>com.placement.entity.Users</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties/>
+  </persistence-unit>
+</persistence>

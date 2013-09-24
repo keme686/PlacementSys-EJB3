@@ -1,0 +1,191 @@
+/* 
+    Document   : Site
+    Created on : Aug 5, 2013, 5:16:49 PM
+    Author     : kemele
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.error{
+    color: red;
+}
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+
+/* the properties of the login screen textboxes*/
+.textboxes
+{   
+    width: 200px;
+    height: 17px;
+
+}
+
+body
+{
+    background-color: #FDFDFD;   
+}
+
+#all_binder
+{
+    width: 90%;
+    height: auto;
+    margin-top: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#banner
+{
+   /* background-image: url('../js/jQuery/css/images/banner_new.jpg');*/
+    background-repeat: no-repeat;
+    background-position: left top;
+    float: left;
+    width: 100%;
+    height: 110px;
+}
+
+#footer
+{
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 12px;
+    padding-bottom: 70px;
+    text-align: center;
+    padding-left: 370px;
+    color: #003366;
+}
+
+#main
+{
+    width: 100%;    
+    float: left;
+    font: 62.5% "Trebuchet MS" , sans-serif;
+    background: #f5f8f9 repeat-x 50% 50%;
+    background-image: url('../js/jQuery/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png');
+
+} 
+.ui-widget .ui-jqdialog-content{
+    font-size: 11px;
+}
+.ui-helper-reset{
+    font-size: 1.1em;
+}
+#cont1
+{
+    width: 20%;
+    min-height: 500px; 
+    float: left;
+    padding-top: 10px;
+    padding-left: 5px;
+
+}
+
+#cont2
+{
+    width: 77%;
+    float: left;
+    padding-left: 6px;
+    padding-top: 10px;    
+}
+
+#displayTab
+{
+    min-height: 500px;     
+}
+
+.ui-accordion-header 
+{
+    display:block;
+}
+.ui-accordion-content a 
+{
+    text-decoration:none; 
+    display:block;
+}
+.ui-accordion-content a:hover 
+{
+    text-decoration: underline;
+}
+
+display-label,
+.editor-label,
+.display-field,
+.editor-field
+{
+    margin: 0.5em 0;
+}
+
+.text-box
+{
+    width: 30em;
+}
+
+.text-box.multi-line
+{
+    height: 6.5em;
+}
+
+.tri-state
+{
+    width: 6em;
+}
+.dialog{
+    
+}
+#formContainer
+{
+    /*background-image: url('../js/jQuery/css/images/logo.jpg');*/
+    background-repeat: no-repeat;
+    margin: 10px 400px 30px 200px;
+    min-height: 300px;
+}
+#formContainer table
+{
+    padding-top: 100px;
+    padding-left:90px;
+}
+.ui-autocomplete-loading  
+{
+    background: white url('../js/jQuery/css/images/ui-anim_basic_16x16.gif') right center no-repeat; 
+}
+.ui-autocomplete {
+    max-height: 180px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 5px;
+    font-size:small;
+}

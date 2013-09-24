@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<jboss-ejb-client xmlns="urn:jboss:ejb-client:1.0">
+    <client-context>
+        <ejb-receivers>
+           <remoting-ejb-receiver outbound-connection-ref="remoting-connector"/>
+        </ejb-receivers>
+    </client-context>
+</jboss-ejb-client>
